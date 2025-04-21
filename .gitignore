@@ -22,3 +22,10 @@ logs
 .env
 .env.*
 !.env.example
+
+bun.lockb
+
+data
+data/strava-activities.json
+
+.DS_Store
