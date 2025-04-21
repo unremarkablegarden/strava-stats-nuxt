@@ -11,9 +11,9 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 ## Setup
 - https://www.strava.com/settings/api
 - Create an API application
-- Note the Client ID, Client secret and Refresh token.
+- Note the `Client ID`, `Client secret` and `Refresh token`.
 
-Create a .env file and put them in these variables:
+Create a `.env` file and put them in these variables:
 
 ```bash
 STRAVA_CLIENT_ID=xxx
@@ -21,7 +21,7 @@ STRAVA_CLIENT_SECRET=xxx
 STRAVA_REFRESH_TOKEN=xxx
 ```
 
-If it gives you trouble about needing an ACCESS TOKEN or complains about the REFRESH TOKEN:
+If it gives you trouble about needing an `ACCESS TOKEN` or complains about the `REFRESH TOKEN`:
 
 - Open in web brower: `https://www.strava.com/oauth/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=http://localhost:3000&approval_prompt=force&scope=activity:read_all`
 
