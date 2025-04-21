@@ -25,7 +25,6 @@ logs
 
 bun.lockb
 
-data
 data/strava-activities.json
 
 .DS_Store
