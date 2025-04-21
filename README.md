@@ -1,4 +1,4 @@
-# Strava stats in Nuxt.js
+# Strava running stats in Nuxt
 
 ![Screenshot 1](https://github.com/unremarkablegarden/strava-stats-nuxt/blob/main/screenshots/1.png?raw=true)
 
