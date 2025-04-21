@@ -1,5 +1,9 @@
 # Strava stats in Nuxt.js
 
+![Screenshot 1](https://github.com/unremarkablegarden/strava-stats-nuxt/blob/main/screenshots/1.png?raw=true)
+
+![Screenshot 2](https://github.com/unremarkablegarden/strava-stats-nuxt/blob/main/screenshots/2.png?raw=true)
+
 You need to run this locally. You need to have Node.js installed.
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
