@@ -59,11 +59,23 @@
 			div.flex
 				span.text-sm.text-gray-500.w-20 Projected
 				span.text-sm.font-medium {{ projectedMonthlyTotal }} km
+			hr.my-4
+			//- div
+				span.text-sm.text-gray-500.w-20 Each run this month
+			div.grid.grid-cols-1.md_grid-cols-2.gap-2
+				div.flex.items-center(v-for="run in monthlyRuns" :key="run.date")
+					span.text-sm.text-gray-500.w-20 {{ run.date }}
+					span.text-sm.font-medium {{ run.distance }} km
+					span.text-xs.text-gray-500.ml-2 ({{ run.total }} km)
+			hr.mt-4
+			
+				
 		div.mt-4.h-64
 			Line(
 				:data="chartData"
 				:options="chartOptions"
 			)
+
 
 </template>
 
@@ -285,6 +297,38 @@ const monthlyProgress = computed(() => {
 	const projectedTotal = (total / currentDay.value) * daysInMonth.value
 	
 	return (total / projectedTotal * 100).toFixed(1)
+})
+
+const monthlyRuns = computed(() => {
+	if (!props.activities?.length) return []
+	const now = new Date()
+	const currentMonth = now.getMonth()
+	const currentYear = now.getFullYear()
+	
+	const getOrdinalSuffix = (n) => {
+		const s = ['th', 'st', 'nd', 'rd']
+		const v = n % 100
+		return n + (s[(v - 20) % 10] || s[v] || s[0])
+	}
+	
+	let runningTotal = 0
+	return props.activities
+		.filter(activity => {
+			const activityDate = new Date(activity.start_date)
+			return activityDate.getMonth() === currentMonth && 
+				   activityDate.getFullYear() === currentYear
+		})
+		.sort((a, b) => new Date(a.start_date) - new Date(b.start_date))
+		.map(activity => {
+			const date = new Date(activity.start_date)
+			runningTotal += activity.distance
+			return {
+				date: getOrdinalSuffix(date.getDate()),
+				distance: (activity.distance / 1000).toFixed(1),
+				total: (runningTotal / 1000).toFixed(1),
+				elapsedTime: activity.elapsed_time
+			}
+		})
 })
 
 const chartData = computed(() => {
